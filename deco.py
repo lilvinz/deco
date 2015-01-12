@@ -37,6 +37,7 @@ class DecoZHL16:
         self.ascend_speed = 10.0
         self.last_stop = 3
         self.stop_size = 3
+        self.imprecision_tolerance = 0.001
         
         # outputs
         self.p_gf_low = 0.0
@@ -126,11 +127,11 @@ class DecoZHL16:
         for i in range(0, self.n_tissues):
             this_gf = (self.p_tissues_n2[i] + self.p_tissues_he[i] - p_ambient) \
                 / ((p_ambient / self.b[i] + self.a[i]) - p_ambient)
-                
+            
             if this_gf > max_gf:
                 max_gf = this_gf
                 lead_tissue = i
-                
+            
         return lead_tissue;
     
     def decotime_update(self, p_ambient, f_n2, f_he):
@@ -153,7 +154,7 @@ class DecoZHL16:
             stop_depth = stop_depth - (stop_depth % self.stop_size) + self.stop_size
         
         # Raise pressure of GF_LOW to the first stop depth.
-        if (self.depth_to_pressure(stop_depth) > self.p_gf_low):
+        if (self.depth_to_pressure(stop_depth) > self.p_gf_low + self.imprecision_tolerance):
             self.p_gf_low = self.depth_to_pressure(stop_depth)
         # Lower pressure of GF_LOW in case the diver is still below deco zone.
         #elif (self.depth_to_pressure(stop_depth) < self.p_gf_low - 0.001 and
@@ -161,7 +162,7 @@ class DecoZHL16:
         #        self.p_gf_low = self.depth_to_pressure(stop_depth)
         
         # If we are deeper than the first stop candidate, simulate ascent accordingly.
-        if (p_ambient > self.depth_to_pressure(stop_depth)):
+        if (p_ambient > self.depth_to_pressure(stop_depth) + self.imprecision_tolerance):
             
             time = (self.pressure_to_depth(p_ambient) - stop_depth) / self.ascend_speed
             
@@ -176,18 +177,21 @@ class DecoZHL16:
             remainder = numpy.ceil(time) - time
             
             # Stay at first stop depth for remaining time.
-            if (remainder > 0):
+            if (remainder > 1 / 60):
                 temp_ctx.update_constant(
                     time = remainder,
                     p_ambient = self.depth_to_pressure(stop_depth),
                     f_n2 = f_n2,
                     f_he = f_he)
                 ++stop_time
-                
+        
         i_stop = 0
         
         while (stop_depth >= self.last_stop):
-            clearance_depth = stop_depth - self.stop_size
+            if (stop_depth == self.last_stop):
+                clearance_depth = 0
+            else:
+                clearance_depth = stop_depth - self.stop_size
             
             # Update current gf.
             gf = self.gf_allowed_get(self.depth_to_pressure(clearance_depth))
