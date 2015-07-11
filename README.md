@@ -14,4 +14,4 @@ IPython notebooks can be rendered online:
 
 The input file format is [uddf](http://uddf.org)
 
-Note that the current state of this work in progress and the main goal of matching gfdeco.f results has NOT been reached. This is due to the impossibility to choose floating point precision in python. The only possible solution i currently see is to call into an external c library to do the actual math which is really not satisfactory.
+Note that the current state of this is work in progress and the main goal of matching gfdeco.f results has NOT been reached. This is due to the impossibility to choose floating point precision in python. The only possible solution i currently see is to call into an external c library to do the actual math which is really not satisfactory.
