@@ -24,23 +24,23 @@
   <gasdefinitions>
     <mix id="15">
       <name>15/55</name>
-      <o2>15</o2>
-      <he>55</he>
+      <o2>0.15</o2>
+      <he>0.55</he>
     </mix>
     <mix id="35">
       <name>35/35</name>
-      <o2>35</o2>
-      <he>35</he>
+      <o2>0.35</o2>
+      <he>0.35</he>
     </mix>
     <mix id="50">
       <name>50/25</name>
-      <o2>50</o2>
-      <he>25</he>
+      <o2>0.50</o2>
+      <he>0.25</he>
     </mix>
     <mix id="100">
       <name>100/0</name>
-      <o2>100</o2>
-      <he>0</he>
+      <o2>1.0</o2>
+      <he>0.0</he>
     </mix>
   </gasdefinitions>
   <profiledata>
