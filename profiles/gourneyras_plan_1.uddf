@@ -52,8 +52,7 @@
 		<repetitiongroup>
 			<dive id="diveid_undefined">
 				<informationbeforedive>
-					<datetime>2015-10-23T16:31:19</datetime>
-					<surfacepressure>100000.0</surfacepressure>
+					<surfacepressure>97800.0</surfacepressure>
 				</informationbeforedive>
 				<samples>
 					<waypoint>

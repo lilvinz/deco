@@ -129,54 +129,78 @@
 					<waypoint><depth>80.94989</depth><divetime>3585</divetime></waypoint>
 					<waypoint><depth>78.0975</depth><divetime>3641.25</divetime></waypoint>
 					<waypoint><depth>79.51514</depth><divetime>3742.5</divetime></waypoint>
+					<waypoint><depth>94.46765</depth><divetime>3787.5</divetime></waypoint>
+					<waypoint><depth>92.32793</depth><divetime>3836.25</divetime></waypoint>
+					<waypoint><depth>91.25695</depth><divetime>3877.5</divetime></waypoint>
+					<waypoint><depth>79.86056</depth><divetime>3903.75</divetime></waypoint>
+					<waypoint><depth>74.87217</depth><divetime>3952.5</divetime></waypoint>
+					<waypoint><depth>70.24185</depth><divetime>3971.25</divetime></waypoint>
+					<waypoint><depth>69.16939</depth><divetime>4035</divetime></waypoint>
+					<waypoint><depth>80.56181</depth><divetime>4068.75</divetime></waypoint>
+					<waypoint><depth>86.61151</depth><divetime>4125</divetime></waypoint>
+					<waypoint><depth>87.67505</depth><divetime>4196.25</divetime></waypoint>
+					<waypoint><depth>85.8924</depth><divetime>4230</divetime></waypoint>
 
-					<waypoint><depth>79.51514</depth><divetime>3843.75</divetime></waypoint>
-					<waypoint><depth>78.0975</depth><divetime>3900</divetime></waypoint>
-					<waypoint><depth>80.94989</depth><divetime>3933.75</divetime></waypoint>
-					<waypoint><depth>82.02037</depth><divetime>3982.5</divetime></waypoint>
-					<waypoint><depth>93.77433</depth><divetime>4031.25</divetime></waypoint>
-					<waypoint><depth>98.76272</depth><divetime>4065</divetime></waypoint>
-					<waypoint><depth>104.1062</depth><divetime>4117.5</divetime></waypoint>
-					<waypoint><depth>96.98801</depth><divetime>4185</divetime></waypoint>
-					<waypoint><depth>91.29514</depth><divetime>4222.5</divetime></waypoint>
-					<waypoint><depth>89.87329</depth><divetime>4286.25</divetime></waypoint>
-					<waypoint><depth>82.75584</depth><divetime>4335</divetime></waypoint>
-					<waypoint><depth>75.99349</depth><divetime>4376.25</divetime></waypoint>
+					<waypoint><depth>90.16217</depth><divetime>4278.75</divetime></waypoint>
+
+					<waypoint><depth>85.8924</depth><divetime>4312.5</divetime></waypoint>
+					<waypoint><depth>87.67505</depth><divetime>4383.75</divetime></waypoint>
+					<waypoint><depth>86.61151</depth><divetime>4440</divetime></waypoint>
+					<waypoint><depth>80.56181</depth><divetime>4473.75</divetime></waypoint>
+					<waypoint><depth>69.16939</depth><divetime>4537.5</divetime></waypoint>
+					<waypoint><depth>70.24185</depth><divetime>4556.25</divetime></waypoint>
+					<waypoint><depth>74.87217</depth><divetime>4605</divetime></waypoint>
+					<waypoint><depth>79.86056</depth><divetime>4631.25</divetime></waypoint>
+					<waypoint><depth>91.25695</depth><divetime>4672.5</divetime></waypoint>
+					<waypoint><depth>92.32793</depth><divetime>4721.25</divetime></waypoint>
+					<waypoint><depth>94.46765</depth><divetime>4766.25</divetime></waypoint>
+					<waypoint><depth>79.51514</depth><divetime>4867.5</divetime></waypoint>
+					<waypoint><depth>78.0975</depth><divetime>4923.75</divetime></waypoint>
+					<waypoint><depth>80.94989</depth><divetime>4957.5</divetime></waypoint>
+					<waypoint><depth>82.02037</depth><divetime>5006.25</divetime></waypoint>
+					<waypoint><depth>93.77433</depth><divetime>5055</divetime></waypoint>
+					<waypoint><depth>98.76272</depth><divetime>5088.75</divetime></waypoint>
+					<waypoint><depth>104.1062</depth><divetime>5141.25</divetime></waypoint>
+					<waypoint><depth>96.98801</depth><divetime>5208.75</divetime></waypoint>
+					<waypoint><depth>91.29514</depth><divetime>5246.25</divetime></waypoint>
+					<waypoint><depth>89.87329</depth><divetime>5310</divetime></waypoint>
+					<waypoint><depth>82.75584</depth><divetime>5358.75</divetime></waypoint>
+					<waypoint><depth>75.99349</depth><divetime>5400</divetime></waypoint>
 					<waypoint>
 						<depth>75</depth>
-						<divetime>4395</divetime>
+						<divetime>5420</divetime>
 						<switchmix ref="mix6"/>
 					</waypoint>
-					<waypoint><depth>68.51847</depth><divetime>4417.5</divetime></waypoint>
-					<waypoint><depth>60.68737</depth><divetime>4470</divetime></waypoint>
-					<waypoint><depth>55.34959</depth><divetime>4586.25</divetime></waypoint>
-					<waypoint><depth>57.1377</depth><divetime>4676.25</divetime></waypoint>
-					<waypoint><depth>55.71932</depth><divetime>4770</divetime></waypoint>
-					<waypoint><depth>59.28635</depth><divetime>4852.5</divetime></waypoint>
-					<waypoint><depth>59.2918</depth><divetime>4927.5</divetime></waypoint>
-					<waypoint><depth>61.78934</depth><divetime>5002.5</divetime></waypoint>
-					<waypoint><depth>64.99905</depth><divetime>5036.25</divetime></waypoint>
-					<waypoint><depth>65.35736</depth><divetime>5096.25</divetime></waypoint>
-					<waypoint><depth>70.70258</depth><divetime>5171.25</divetime></waypoint>
-					<waypoint><depth>70.35145</depth><divetime>5295</divetime></waypoint>
-					<waypoint><depth>63.59406</depth><divetime>5351.25</divetime></waypoint>
-					<waypoint><depth>63.95386</depth><divetime>5463.75</divetime></waypoint>
-					<waypoint><depth>63.9613</depth><divetime>5553.75</divetime></waypoint>
-					<waypoint><depth>61.83075</depth><divetime>5606.25</divetime></waypoint>
-					<waypoint><depth>61.47814</depth><divetime>5707.5</divetime></waypoint>
-					<waypoint><depth>57.92401</depth><divetime>5782.5</divetime></waypoint>
-					<waypoint><depth>54.01205</depth><divetime>5865</divetime></waypoint>
-					<waypoint><depth>46.53976</depth><divetime>5940</divetime></waypoint>
-					<waypoint><depth>41.20347</depth><divetime>6000</divetime></waypoint>
-					<waypoint><depth>46.54869</depth><divetime>6056.25</divetime></waypoint>
-					<waypoint><depth>51.53757</depth><divetime>6120</divetime></waypoint>
-					<waypoint><depth>52.61004</depth><divetime>6206.25</divetime></waypoint>
-					<waypoint><depth>51.19141</depth><divetime>6262.5</divetime></waypoint>
-					<waypoint><depth>55.82421</depth><divetime>6307.5</divetime></waypoint>
-					<waypoint><depth>55.82718</depth><divetime>6401.25</divetime></waypoint>
-					<waypoint><depth>59.39421</depth><divetime>6450</divetime></waypoint>
-					<waypoint><depth>62.95827</depth><divetime>6532.5</divetime></waypoint>
-					<waypoint><depth>61.89547</depth><divetime>6603.75</divetime></waypoint>
+					<waypoint><depth>68.51847</depth><divetime>5441.25</divetime></waypoint>
+					<waypoint><depth>60.68737</depth><divetime>5493.75</divetime></waypoint>
+					<waypoint><depth>55.34959</depth><divetime>5610</divetime></waypoint>
+					<waypoint><depth>57.1377</depth><divetime>5700</divetime></waypoint>
+					<waypoint><depth>55.71932</depth><divetime>5793.75</divetime></waypoint>
+					<waypoint><depth>59.28635</depth><divetime>5876.25</divetime></waypoint>
+					<waypoint><depth>59.2918</depth><divetime>5951.25</divetime></waypoint>
+					<waypoint><depth>61.78934</depth><divetime>6026.25</divetime></waypoint>
+					<waypoint><depth>64.99905</depth><divetime>6060</divetime></waypoint>
+					<waypoint><depth>65.35736</depth><divetime>6120</divetime></waypoint>
+					<waypoint><depth>70.70258</depth><divetime>6195</divetime></waypoint>
+					<waypoint><depth>70.35145</depth><divetime>6318.75</divetime></waypoint>
+					<waypoint><depth>63.59406</depth><divetime>6375</divetime></waypoint>
+					<waypoint><depth>63.95386</depth><divetime>6487.5</divetime></waypoint>
+					<waypoint><depth>63.9613</depth><divetime>6577.5</divetime></waypoint>
+					<waypoint><depth>61.83075</depth><divetime>6630</divetime></waypoint>
+					<waypoint><depth>61.47814</depth><divetime>6731.25</divetime></waypoint>
+					<waypoint><depth>57.92401</depth><divetime>6806.25</divetime></waypoint>
+					<waypoint><depth>54.01205</depth><divetime>6888.75</divetime></waypoint>
+					<waypoint><depth>46.53976</depth><divetime>6963.75</divetime></waypoint>
+					<waypoint><depth>41.20347</depth><divetime>7023.75</divetime></waypoint>
+					<waypoint><depth>46.54869</depth><divetime>7080</divetime></waypoint>
+					<waypoint><depth>51.53757</depth><divetime>7143.75</divetime></waypoint>
+					<waypoint><depth>52.61004</depth><divetime>7230</divetime></waypoint>
+					<waypoint><depth>51.19141</depth><divetime>7286.25</divetime></waypoint>
+					<waypoint><depth>55.82421</depth><divetime>7331.25</divetime></waypoint>
+					<waypoint><depth>55.82718</depth><divetime>7425</divetime></waypoint>
+					<waypoint><depth>59.39421</depth><divetime>7473.75</divetime></waypoint>
+					<waypoint><depth>62.95827</depth><divetime>7556.25</divetime></waypoint>
+					<waypoint><depth>61.89547</depth><divetime>7627.5</divetime></waypoint>
 				</samples>
 			</dive>
 		</repetitiongroup>
