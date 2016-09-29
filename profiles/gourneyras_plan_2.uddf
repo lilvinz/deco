@@ -29,10 +29,10 @@
             <switchdepth>36</switchdepth>
 		</mix>
 		<mix id="mix5">
-			<name>TX21/45</name>
-			<o2>0.21</o2>
-			<n2>0.34</n2>
-			<he>0.45</he>
+			<name>TX20/40</name>
+			<o2>0.20</o2>
+			<n2>0.40</n2>
+			<he>0.40</he>
             <switchdepth>57</switchdepth>
 		</mix>
 		<mix id="mix6">
