@@ -127,6 +127,8 @@ class deco_zhl16:
         
         self.p_tissues_n2 = numpy.full(deco_zhl16.N_TISSUES, (p_surface - p_h2o) * f_n2_init, dtype=dtype)
         self.p_tissues_he = numpy.full(deco_zhl16.N_TISSUES, (p_surface - p_h2o) * f_he_init, dtype=dtype)
+        self.supersaturation_n2 = numpy.full(deco_zhl16.N_TISSUES, 0, dtype=dtype)
+        self.supersaturation_he = numpy.full(deco_zhl16.N_TISSUES, 0, dtype=dtype)
         self.a = numpy.full(deco_zhl16.N_TISSUES, 0, dtype=dtype)
         self.b = numpy.full(deco_zhl16.N_TISSUES, 0, dtype=dtype)
         
@@ -142,6 +144,8 @@ class deco_zhl16:
         newone.mix_ctx = copy.deepcopy(self.mix_ctx, memo)
         newone.p_tissues_n2 = copy.deepcopy(self.p_tissues_n2, memo)
         newone.p_tissues_he = copy.deepcopy(self.p_tissues_he, memo)
+        newone.supersaturation_he = copy.deepcopy(self.supersaturation_he, memo)
+        newone.supersaturation_n2 = copy.deepcopy(self.supersaturation_n2, memo)
         newone.a = copy.deepcopy(self.a, memo)
         newone.b = copy.deepcopy(self.b, memo)
         return newone
@@ -158,13 +162,49 @@ class deco_zhl16:
     def update_constant(self, time, p_amb):
         # Get acive mix data
         active_mix = self.mix_ctx.get_mix(self.mix_ctx.get_active_mix())
+        p_n2 = (p_amb - self.p_h2o) * active_mix.get_fn2()
+        p_he = (p_amb - self.p_h2o) * active_mix.get_fhe()
+
+        # Update integrated supersaturation
+        ss_n2 = (
+            time *
+            (-self.p_tissues_n2 + p_n2) +
+            (
+                (
+                    numpy.power(2, -(time / self.halftime_n2)) *
+                    (-1 + numpy.power(2, time / self.halftime_n2)) *
+                    self.halftime_n2 *
+                    (self.p_tissues_n2 - p_n2)
+                ) /
+                (
+                    numpy.log(2)
+                )
+            )
+        )
+        self.supersaturation_n2 += numpy.where(ss_n2 > 0, ss_n2, 0)
+        ss_he = (
+            time *
+            (-self.p_tissues_he + p_he) +
+            (
+                (
+                    numpy.power(2, -(time / self.halftime_he)) *
+                    (-1 + numpy.power(2, time / self.halftime_he)) *
+                    self.halftime_he *
+                    (self.p_tissues_he - p_he)
+                ) /
+                (
+                    numpy.log(2)
+                )
+            )
+        )
+        self.supersaturation_he += numpy.where(ss_he > 0, ss_he, 0)
         
         # Update tissue loadings.
-        self.p_tissues_n2 += numpy.multiply(((p_amb - self.p_h2o) * active_mix.get_fn2() - self.p_tissues_n2),
+        self.p_tissues_n2 += numpy.multiply((p_n2 - self.p_tissues_n2),
             (1 - numpy.power(2, -1 * time / self.halftime_n2)))
-        self.p_tissues_he += numpy.multiply(((p_amb - self.p_h2o) * active_mix.get_fhe() - self.p_tissues_he),
+        self.p_tissues_he += numpy.multiply((p_he - self.p_tissues_he),
             (1 - numpy.power(2, -1 * time / self.halftime_he)))
-        
+
         # Update weighted a and b values.
         self.a = numpy.divide(self.a_n2 * self.p_tissues_n2 + self.a_he * self.p_tissues_he,
             self.p_tissues_n2 + self.p_tissues_he,
@@ -178,10 +218,54 @@ class deco_zhl16:
         active_mix = self.mix_ctx.get_mix(self.mix_ctx.get_active_mix())
         
         p_begin_alv_n2 = (p_begin - self.p_h2o) * active_mix.get_fn2()
-        p_begin_alv_he = (p_begin - self.p_h2o) * active_mix.get_fhe()
+        p_end_alv_n2 = (p_begin - self.p_h2o) * active_mix.get_fn2()
+        p_begin_alv_he = (p_end - self.p_h2o) * active_mix.get_fhe()
+        p_end_alv_he = (p_end - self.p_h2o) * active_mix.get_fn2()
         R_n2 = ((p_end - self.p_h2o) * active_mix.get_fn2() - p_begin_alv_n2) / time
         R_he = ((p_end - self.p_h2o) * active_mix.get_fhe() - p_begin_alv_he) / time
-        
+
+        # Update integrated supersaturation
+        ss_n2 = (
+            (time * time * (p_begin_alv_n2 - p_end_alv_he + time * R_n2)) / (2 * time) +
+            (
+                numpy.exp(-time * (numpy.log(2) / self.halftime_n2)) *
+                (
+                    -(numpy.log(2) / self.halftime_n2) * self.p_tissues_n2 +
+                    (numpy.log(2) / self.halftime_n2) * p_begin_alv_n2 -
+                    R_n2 +
+                    numpy.exp(time * (numpy.log(2) / self.halftime_n2)) *
+                    (
+                        R_n2 + (numpy.log(2) / self.halftime_n2) *
+                        (self.p_tissues_n2 - p_begin_alv_n2 - time * R_n2)
+                    )
+                )
+            ) /
+            (
+                (numpy.log(2) / self.halftime_n2) * (numpy.log(2) / self.halftime_n2)
+            )
+        )
+        self.supersaturation_n2 += numpy.where(ss_n2 > 0, ss_n2, 0)
+        ss_he = (
+            (time * time * (p_begin_alv_he - p_end_alv_he + time * R_he)) / (2 * time) +
+            (
+                numpy.exp(-time * (numpy.log(2) / self.halftime_he)) *
+                (
+                    -(numpy.log(2) / self.halftime_he) * self.p_tissues_he +
+                    (numpy.log(2) / self.halftime_he) * p_begin_alv_he -
+                    R_he +
+                    numpy.exp(time * (numpy.log(2) / self.halftime_he)) *
+                    (
+                        R_he + (numpy.log(2) / self.halftime_he) *
+                        (self.p_tissues_he - p_begin_alv_he - time * R_he)
+                    )
+                )
+            ) /
+            (
+                (numpy.log(2) / self.halftime_he) * (numpy.log(2) / self.halftime_he)
+            )
+        )
+        self.supersaturation_he += numpy.where(ss_he > 0, ss_he, 0)
+
         # Update tissues gas loadings
         self.p_tissues_n2 = p_begin_alv_n2 + R_n2 * (time - 1 / (numpy.log(2) / self.halftime_n2)) \
             - (p_begin_alv_n2 - self.p_tissues_n2 - (R_n2 / (numpy.log(2) / self.halftime_n2))) \
@@ -392,7 +476,7 @@ class deco_zhl16:
             time = (self.pressure_to_depth(p_amb) - di.stops[0]['depth']) \
                 / self.ascend_speed
             
-            # Add initial ascent from ambient to first stop.
+            # Add initial ascent from ambient to first stop.deepcopy
             di.time_to_surface += numpy.ceil(time)
             
         return di

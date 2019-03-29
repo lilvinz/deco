@@ -45,7 +45,7 @@ class deco_mix:
             return "TX%u/%u" % (round(self.f_o2 * 100), round(self.f_he * 100))
 
     def get_enabled(self):
-        return self.enabled;
+        return self.enabled
 
     def get_fhe(self):
         return self.f_he
