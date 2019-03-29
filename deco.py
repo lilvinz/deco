@@ -11,8 +11,8 @@ import deco_mix
 class deco_settings:
     def __init__(
                  self,
-                 gf_low = 0.1,
-                 gf_high = 0.9,
+                 gf_low = 0.5,
+                 gf_high = 0.8,
                  nofly_pressure = 0.6,
                  ascent_rate = 10,
                  stop_size = 3,
