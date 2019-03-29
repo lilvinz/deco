@@ -92,6 +92,12 @@ class deco_zhl16:
     DECO_ZHL16_MAX_NDL_TIME = 999
     p_h2o = P_H2O_NAVY
     MAX_STOP_TIME = 999
+    halftime_n2 = None
+    a_n2 = None
+    b_n2 = None
+    halftime_he = None
+    a_he = None
+    b_he = None
     
     settings = None
     mix_ctx = None
@@ -233,7 +239,7 @@ class deco_zhl16:
                 max_gf = this_gf
                 lead_tissue = i
             
-        return lead_tissue;
+        return lead_tissue
 
     def ndt_get(self, p_amb):
         ndt = 0
@@ -273,9 +279,6 @@ class deco_zhl16:
         di.time_to_surface = 0
         stop_time = 0
         
-        # Get acive mix data
-        active_mix = self.mix_ctx.get_mix(self.mix_ctx.get_active_mix())
-        
         # Determine first ceiling pressure.
         p_ceiling = temp_ctx.ceiling_get_pressure(self.settings.gf_low)
         
@@ -313,7 +316,7 @@ class deco_zhl16:
                 temp_ctx.update_constant(
                     time = remainder,
                     p_amb = self.depth_to_pressure(stop_depth))
-                ++stop_time
+                stop_time += 1
         
         i_stop = 0
         
@@ -404,7 +407,7 @@ class deco_zhl16:
             di.allowed_gf = self.gf_allowed_get(p_amb)
             di.gf_low_depth = self.pressure_to_depth(self.p_gf_low)
         else:
-            di.time_to_surface = 0;
+            di.time_to_surface = 0
             # Update gf and gf_low depth. Note that ndt is calculated
             # against gf_high at surface pressure only.
             di.allowed_gf = self.settings.gf_high
